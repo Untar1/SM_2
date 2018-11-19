@@ -5,6 +5,7 @@
 package his.sequence.diagrams;
 
 import his.Folder;
+import his.Oncologist;
 import his.Surgeon;
 import his.implementation.HasBoundary;
 
@@ -34,19 +35,28 @@ public class SurgeryController implements HasBoundary
 		return surgeryId;
 	}
 	
-	public boolean setSurgeonTeam( String surgeonId, LocalDateTime dateTime, Collection teamList )
+	public boolean setSurgeonTeam( String surgeonId, LocalDateTime dateTime, Collection<Oncologist> teamList )
 	{
         if (!boundary.getCurrentUserRole().equalsIgnoreCase("Surgeon")) {
             boundary.error("Not enough permissions");
         }
-        if (surgeryDAO.getSurgeryId(surgeonId, dateTime) == null) boundary.error("Surgery does not exist");
+        String surgeryId = surgeryDAO.getSurgeryId(surgeonId, dateTime);
+        if (surgeryId == null) boundary.error("Surgery does not exist");
+        LocalDateTime currentDate = boundary.getCurrentDate();
+        if (!isInAllowedPeriod(currentDate, dateTime)) boundary.error("Cannot modify the team");
+        for (Oncologist oncologist : teamList) {
+            if (userDAO.getOncologist(oncologist.getId()) == null) boundary.error("Oncologist does not exist");
+            if (!surgeryDAO.isOncologistAvailable(dateTime, oncologist.getId())) boundary.error("Oncologist is not available");
+            if (!surgeryDAO.addAsTeamMember(surgeryId, oncologist.getId())) boundary.error("Failed to add oncologist as a member");
 
-	    return false;
+        }
+        return true;
 	}
 	
 	public boolean isInAllowedPeriod( LocalDateTime curr, LocalDateTime surgDate )
 	{
-
+        int diff = surgDate.getDayOfYear() - curr.getDayOfYear();
+        if ((diff <= 7) && (diff >=5) || diff == 358 || diff == 359) return true;
 	    return false;
 	}
 

@@ -18,8 +18,10 @@ public class Oncologist
 	
 	public String getId( )
 	{
-		return null;
+		return professionalID;
 	}
+
+	public OncologistType getOncologistType() { return oncologistType;}
 	
 	
 }
