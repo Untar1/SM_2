@@ -37,6 +37,14 @@ import java.util.Scanner;
 public class Boundary {
     private static UserSettings settings;
 
+    public static UserSettings getSettings() {
+        return settings;
+    }
+
+    public static void setSettings(UserSettings settings) {
+        Boundary.settings = settings;
+    }
+
     public String getCurrentUserRole() {
         return settings.getRole();
     }
