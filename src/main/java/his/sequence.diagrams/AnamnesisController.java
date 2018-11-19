@@ -8,8 +8,8 @@ import his.implementation.HasBoundary;
 
 public class AnamnesisController implements HasBoundary {
     // TODO: Like this?
-    private UserDAO userDAO = new UserDAO();
-    private AnamnesisDAO anamnesisDAO = new AnamnesisDAO();
+    private UserDAO userDAO;
+    private AnamnesisDAO anamnesisDAO;
 
     private Boundary boundary;
 
@@ -24,6 +24,10 @@ public class AnamnesisController implements HasBoundary {
         return anamnesisDAO.createAnamnesis(patientId, text);
     }
 
+    public AnamnesisController(UserDAO userDAO, AnamnesisDAO anamnesisDAO) {
+        this.userDAO = userDAO;
+        this.anamnesisDAO = anamnesisDAO;
+    }
 
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
