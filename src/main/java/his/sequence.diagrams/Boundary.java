@@ -155,7 +155,11 @@ public class Boundary {
             }
 
             action.setContext();
-            action.execute();
+            try {
+                action.execute();
+            } catch (RuntimeException e) {
+                System.out.println(String.format("Action invocation ended with an error: %s", e.getMessage()));
+            }
         }
     }
 
