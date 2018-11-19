@@ -1,8 +1,11 @@
 package his.implementation.actions;
 
 import his.implementation.Action;
+import his.sequence.diagrams.Boundary;
 
 public class AssignOncologist implements Action {
+    private Boundary boundary;
+
     @Override
     public void setContext() {
 
@@ -16,5 +19,10 @@ public class AssignOncologist implements Action {
     @Override
     public String description() {
         return "Assign an Oncologist";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

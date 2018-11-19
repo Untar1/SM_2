@@ -5,6 +5,7 @@ import his.OncologistType;
 import his.SurgeonType;
 import his.implementation.Action;
 import his.implementation.Roles;
+import his.sequence.diagrams.Boundary;
 import his.sequence.diagrams.UserController;
 
 import java.util.Arrays;
@@ -12,6 +13,8 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddNewDoctorAction implements Action {
+    private Boundary boundary;
+
     private String profId;
     private String name;
     private String surname;
@@ -45,5 +48,10 @@ public class AddNewDoctorAction implements Action {
     @Override
     public String description() {
         return "Add New Doctor to the System";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

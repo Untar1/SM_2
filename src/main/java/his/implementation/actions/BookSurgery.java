@@ -2,12 +2,15 @@ package his.implementation.actions;
 
 import his.Surgeon;
 import his.implementation.Action;
+import his.sequence.diagrams.Boundary;
 import his.sequence.diagrams.SurgeryController;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class BookSurgery implements Action {
+    private Boundary boundary;
+
     private String patientId;
     private LocalDateTime start;
     private String surgeonId;
@@ -32,5 +35,10 @@ public class BookSurgery implements Action {
     @Override
     public String description() {
         return "Book a Surgery";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

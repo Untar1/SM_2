@@ -1,6 +1,7 @@
 package his.implementation.actions;
 
 import his.implementation.Action;
+import his.sequence.diagrams.Boundary;
 import his.sequence.diagrams.FolderController;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AddTherapy implements Action {
+    private Boundary boundary;
     private DateTimeFormatter format = getFormat();
 
     private String patientId;
@@ -31,5 +33,10 @@ public class AddTherapy implements Action {
     @Override
     public String description() {
         return "Add Therapy to the Patient Folder";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

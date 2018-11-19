@@ -1,11 +1,14 @@
 package his.implementation.actions;
 
 import his.implementation.Action;
+import his.sequence.diagrams.Boundary;
 import his.sequence.diagrams.MedicineController;
 
 import java.util.Scanner;
 
 public class AddMedicine implements Action {
+    private Boundary boundary;
+
     private String medicineName;
     private String companyName;
 
@@ -25,5 +28,10 @@ public class AddMedicine implements Action {
     @Override
     public String description() {
         return "Add medicine to the hospital system list";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

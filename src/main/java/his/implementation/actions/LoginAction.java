@@ -9,6 +9,7 @@ import his.sequence.diagrams.UserDAO;
 import java.util.Scanner;
 
 public class LoginAction implements Action {
+    private Boundary boundary;
     private Scanner sc = systemIn();
 
     private String username;
@@ -34,5 +35,10 @@ public class LoginAction implements Action {
     @Override
     public String description() {
         return "Login to the System";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }

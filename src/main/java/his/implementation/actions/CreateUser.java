@@ -1,11 +1,14 @@
 package his.implementation.actions;
 
 import his.implementation.Action;
+import his.sequence.diagrams.Boundary;
 import his.sequence.diagrams.UserController;
 
 import java.util.Scanner;
 
 public class CreateUser implements Action {
+    private Boundary boundary;
+
     private Scanner sc = systemIn();
 
     private String username;
@@ -28,5 +31,10 @@ public class CreateUser implements Action {
     @Override
     public String description() {
         return "Register to the system";
+    }
+
+    @Override
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
     }
 }
