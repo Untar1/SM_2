@@ -1,10 +1,10 @@
 /**
- * @(#) dateTime.java
+ * @(#) DateTime.java
  */
 
 package his;
 
-public class dateTime
+public class DateTime
 {
-	
+
 }
