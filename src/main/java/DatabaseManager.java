@@ -6,11 +6,13 @@ import java.sql.Statement;
 
 public class DatabaseManager {
 
+    private static Class<?> driver;
+
     public static void initializeDatabase() {
         Connection con = null;
         Statement stmt = null;
         try {
-            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            initDriver();
             con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/hospitaldb", "SA", "");
             stmt = con.createStatement();
             stmt.executeUpdate("CREATE TABLE users (\n" +
@@ -48,7 +50,7 @@ public class DatabaseManager {
         Statement stmt = null;
 
         try {
-            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            initDriver();
             con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/hospitaldb", "SA", "");
             stmt = con.createStatement();
             stmt.executeUpdate("DROP TABLE enrollment;");
@@ -60,6 +62,14 @@ public class DatabaseManager {
         }
     }
 
-
+    private static void initDriver() {
+        if (driver == null) {
+            try {
+                driver = Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
