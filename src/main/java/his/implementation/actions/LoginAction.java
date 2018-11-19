@@ -9,15 +9,15 @@ import his.sequence.diagrams.UserDAO;
 import java.util.Scanner;
 
 public class LoginAction implements Action {
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc = systemIn();
 
     private String username;
     private String password;
 
     @Override
     public void setContext() {
-        username = getNotBlankLine();
-        password = getNotBlankLine();
+        username = getNotBlankLine(sc, "Enter username: ");
+        password = getNotBlankLine(sc,  "Enter password: ");
     }
 
     @Override
@@ -34,14 +34,5 @@ public class LoginAction implements Action {
     @Override
     public String description() {
         return "Login to the System";
-    }
-
-    private String getNotBlankLine() {
-        while (true) {
-            String line = sc.next();
-            if (!Strings.isNullOrEmpty(line)) {
-                return line;
-            }
-        }
     }
 }

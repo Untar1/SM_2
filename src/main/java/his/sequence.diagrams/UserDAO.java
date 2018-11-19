@@ -22,7 +22,7 @@ public class UserDAO
 		return false;
 	}
 	
-	public String createDoctor( String professionalId, String name, String surname, String type, SurgeonType subType )
+	public String createDoctor( String professionalId, String name, String surname, String type, String subType )
 	{
 		return null;
 	}

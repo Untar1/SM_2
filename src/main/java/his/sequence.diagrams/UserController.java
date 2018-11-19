@@ -15,7 +15,7 @@ public class UserController implements HasBoundary
     private UserDAO userDAO = new UserDAO();
     private Boundary boundary;
 
-	public String addNewDoctor( String professionalId, String name, String surname, String type, SurgeonType subType )
+	public String addNewDoctor( String professionalId, String name, String surname, String type, String subType )
 	{
         String currentUserRole = boundary.getCurrentUserRole();
         if (!currentUserRole.equalsIgnoreCase("administrative officer")) {
