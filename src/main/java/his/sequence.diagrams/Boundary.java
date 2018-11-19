@@ -4,16 +4,33 @@
 
 package his.sequence.diagrams;
 
+import com.google.common.collect.Lists;
 import his.DateTime;
 import his.ImagingTest;
 import his.implementation.Roles;
 import his.implementation.UserSettings;
 import his.implementation.Action;
+import his.implementation.actions.AddMedicine;
+import his.implementation.actions.AddNewDoctorAction;
+import his.implementation.actions.AddTherapy;
+import his.implementation.actions.AssignOncologist;
+import his.implementation.actions.BookSurgery;
+import his.implementation.actions.BookTest;
+import his.implementation.actions.CopyAndAddTests;
 import his.implementation.actions.CreateUser;
+import his.implementation.actions.GetPatientData;
 import his.implementation.actions.LoginAction;
+import his.implementation.actions.OpenPatientFolder;
+import his.implementation.actions.PrescribeVisit;
+import his.implementation.actions.PrintResults;
+import his.implementation.actions.SeeAllDoctors;
+import his.implementation.actions.SeeMedicines;
+import his.implementation.actions.SpecifyTeam;
+import his.implementation.actions.WriteAnamnesis;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -68,31 +85,77 @@ public class Boundary {
             System.out.println("==================================");
 
             Map<Integer, Action> context = new HashMap<>();
-            System.out.println("List of available actions: ");
+            List<Action> actions;
             if (settings == null) {
-                context.put(0, new LoginAction());
-                context.put(1, new CreateUser());
+                actions = Lists.newArrayList(
+                        new LoginAction(),
+                        new CreateUser()
+                );
             } else {
                 String role = settings.getRole();
+                System.out.println(String.format("Active role: %s", role));
                 if (Roles.ROLE_ADMIN.equals(role)) {
-
+                    actions = Lists.newArrayList(
+                            new AddNewDoctorAction(),
+                            new SeeAllDoctors()
+                    );
                 } else if (Roles.ROLE_ONCOLOGIST.equals(role)) {
-
+                    actions = Lists.newArrayList(
+                            new BookTest(),
+                            new WriteAnamnesis(),
+                            new CopyAndAddTests(),
+                            new AddTherapy(),
+                            new PrintResults(),
+                            new AddMedicine(),
+                            new SeeMedicines(),
+                            new GetPatientData(),
+                            new BookSurgery()
+                    );
                 } else if (Roles.ROLE_PRIV_DOC.equals(role)) {
-
+                    actions = Lists.newArrayList(
+                            new PrescribeVisit(),
+                            new BookTest(),
+                            new WriteAnamnesis(),
+                            new CopyAndAddTests(),
+                            new AddTherapy(),
+                            new PrintResults(),
+                            new AddMedicine(),
+                            new SeeMedicines(),
+                            new GetPatientData(),
+                            new BookSurgery()
+                    );
                 } else if (Roles.ROLE_RECEPTIONIST.equals(role)) {
-
+                    actions = Lists.newArrayList(
+                            new OpenPatientFolder()
+                    );
                 } else if (Roles.ROLE_SURGEON.equals(role)) {
-
+                    actions = Lists.newArrayList(
+                            new SpecifyTeam()
+                    );
                 } else {
                     throw new RuntimeException(String.format("Unknown role: %s", role));
                 }
+            }
+
+            System.out.println("List of available actions: ");
+            for (int i = 0; i < actions.size(); i++) {
+                Action action = actions.get(i);
+                System.out.println(String.format("%d. %s", i, action.description()));
+                context.put(i, action);
             }
 
             Integer choice = intOrExit();
             if (choice == null) {
                 break;
             }
+
+            Action action = context.get(choice);
+            if (action == null) {
+                continue;
+            }
+
+            action.setContext();
+            action.execute();
         }
     }
 
