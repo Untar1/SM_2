@@ -15,42 +15,42 @@ public class Boundary
 	{
 		return null;
 	}
-	
+
 	public void error( String message )
 	{
-		
+	    throw new RuntimeException(message);
 	}
-	
+
 	public Collection getMedicines( )
 	{
 		return null;
 	}
-	
+
 	public ImagingTest getSubTestType( )
 	{
 		return null;
 	}
-	
+
 	public String getPatientName( )
 	{
 		return null;
 	}
-	
+
 	public String getPatientSurname( )
 	{
 		return null;
 	}
-	
+
 	public String getPatientIdCode( )
 	{
 		return null;
 	}
-	
+
 	public String getPatientInsuranceCode( )
 	{
 		return null;
 	}
-	
+
 	public DateTime getCurrentDate( )
 	{
 		return null;
