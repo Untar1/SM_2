@@ -73,7 +73,19 @@ public class DatabaseManager {
                     "  insurance VARCHAR(40),\n" +
                     "  PRIMARY KEY (id)\n" +
                     ");");
-
+            stmt.executeUpdate("CREATE TABLE medicines (\n" +
+                    "  id INTEGER IDENTITY ,\n" +
+                    "  name VARCHAR(40),\n" +
+                    "  pharmaceuticalCompany VARCHAR(40),\n" +
+                    "  code VARCHAR(40),\n" +
+                    "  therapy VARCHAR(40),\n" +
+                    "  schedule VARCHAR(40),\n" +
+                    "  folder INTEGER,\n" +
+                    "  startOfTherapy VARCHAR(40),\n" +
+                    "  endOfTherapy VARCHAR(40),\n" +
+                    "  FOREIGN KEY (medicine) REFERENCES medicines(id)\n" +
+                    "  PRIMARY KEY (id)\n" +
+                    ");");
             System.out.println("Database initialized successfully");
         } catch (Exception e) {
             e.printStackTrace(System.out);
