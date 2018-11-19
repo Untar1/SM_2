@@ -24,7 +24,9 @@ public class CreateUser implements Action {
 
     @Override
     public void execute() {
-        boolean result = new UserController().registerUser(username, password, role);
+        UserController controller = new UserController();
+        controller.setBoundary(boundary);
+        boolean result = controller.registerUser(username, password, role);
         System.out.println(String.format("User created successfully: %b", result));
     }
 

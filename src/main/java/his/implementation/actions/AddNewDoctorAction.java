@@ -41,7 +41,9 @@ public class AddNewDoctorAction implements Action {
 
     @Override
     public void execute() {
-        String doctor = new UserController().addNewDoctor(profId, name, surname, type, subType);
+        UserController controller = new UserController();
+        controller.setBoundary(boundary);
+        String doctor = controller.addNewDoctor(profId, name, surname, type, subType);
         System.out.println(String.format("Added doctor with id: %s", doctor));
     }
 

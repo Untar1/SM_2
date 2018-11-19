@@ -23,7 +23,9 @@ public class LoginAction implements Action {
 
     @Override
     public void execute() {
-        boolean success = new UserController().login(username, password);
+        UserController controller = new UserController();
+        controller.setBoundary(boundary);
+        boolean success = controller.login(username, password);
         if (!success) {
             return;
         }

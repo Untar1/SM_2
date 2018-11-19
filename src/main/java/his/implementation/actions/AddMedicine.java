@@ -21,7 +21,9 @@ public class AddMedicine implements Action {
 
     @Override
     public void execute() {
-        String res = new MedicineController().addMedicine(medicineName, companyName);
+        MedicineController controller = new MedicineController();
+        controller.setBoundary(boundary);
+        String res = controller.addMedicine(medicineName, companyName);
         System.out.println(String.format("Created medicine with medicine ID: %s", res));
     }
 

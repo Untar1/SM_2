@@ -21,4 +21,8 @@ public final class ExternalSystemIntegration
 		return false;
 	}
 
+	public boolean copyTestResults(String patientId) {
+        return true;
+    }
+
 }

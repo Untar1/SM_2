@@ -28,7 +28,9 @@ public class BookSurgery implements Action {
         Surgeon surgeon = new Surgeon();
         surgeon.setProfessionalID(surgeonId);
 
-        String surgery = new SurgeryController().bookSurgery(patientId, start, surgeon);
+        SurgeryController controller = new SurgeryController();
+        controller.setBoundary(boundary);
+        String surgery = controller.bookSurgery(patientId, start, surgeon);
         System.out.println(String.format("Booked a surgery with id => %s", surgery));
     }
 

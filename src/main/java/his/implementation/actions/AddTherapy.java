@@ -26,7 +26,9 @@ public class AddTherapy implements Action {
 
     @Override
     public void execute() {
-        String therapyId = new FolderController().addTherapy(patientId, start, end);
+        FolderController controller = new FolderController();
+        controller.setBoundary(boundary);
+        String therapyId = controller.addTherapy(patientId, start, end);
         System.out.println(String.format("Added therapy with id => %s", therapyId));
     }
 
