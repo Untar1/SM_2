@@ -8,6 +8,7 @@ import his.Folder;
 import his.Oncologist;
 import his.Surgeon;
 import his.implementation.HasBoundary;
+import his.implementation.Roles;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -21,7 +22,7 @@ public class SurgeryController implements HasBoundary
 
 	public String bookSurgery(String patientId, LocalDateTime date, Surgeon surgeon )
 	{
-        if (!boundary.getCurrentUserRole().equalsIgnoreCase("Oncologist")) {
+        if (!boundary.getCurrentUserRole().equalsIgnoreCase(Roles.ROLE_ONCOLOGIST)) {
             boundary.error("Not enough permissions");
         }
         String surgeonId = surgeon.getId();

@@ -5,6 +5,7 @@
 package his.sequence.diagrams;
 
 import his.implementation.HasBoundary;
+import his.implementation.Roles;
 
 public class AnamnesisController implements HasBoundary {
     // TODO: Like this?
@@ -14,7 +15,7 @@ public class AnamnesisController implements HasBoundary {
     private Boundary boundary;
 
     public String addAnamnesis(String patientId, String text) {
-        if (!boundary.getCurrentUserRole().equalsIgnoreCase("Oncologist")) {
+        if (!boundary.getCurrentUserRole().equalsIgnoreCase(Roles.ROLE_ONCOLOGIST)) {
             boundary.error("Not enough permissions");
         }
         if (!userDAO.patientWithIdExists(patientId)) {

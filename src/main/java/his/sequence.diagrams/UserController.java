@@ -4,8 +4,8 @@
 
 package his.sequence.diagrams;
 
-import his.SurgeonType;
 import his.implementation.HasBoundary;
+import his.implementation.Roles;
 
 import java.util.Collection;
 
@@ -18,7 +18,7 @@ public class UserController implements HasBoundary
 	public String addNewDoctor( String professionalId, String name, String surname, String type, String subType )
 	{
         String currentUserRole = boundary.getCurrentUserRole();
-        if (!currentUserRole.equalsIgnoreCase("administrative officer")) {
+        if (!currentUserRole.equalsIgnoreCase(Roles.ROLE_ADMIN)) {
             boundary.error("Not enough permissions");
         }
         boolean doctorwithIdExists = userDAO.doctorWIthIdExists(professionalId);
@@ -45,7 +45,7 @@ public class UserController implements HasBoundary
 	{
         // TODO: How to parse error msgs?
 	    String currentUserRole = boundary.getCurrentUserRole();
-        if (!currentUserRole.equals("Receptionist")) {
+        if (!currentUserRole.equals(Roles.ROLE_RECEPTIONIST)) {
             boundary.error("Not enough permissions");
         }
 
@@ -55,7 +55,7 @@ public class UserController implements HasBoundary
 	public Collection getAllDoctors( String docType )
 	{
 		String currentUserRole = boundary.getCurrentUserRole();
-		if (!currentUserRole.equalsIgnoreCase("administrative officer")) {
+		if (!currentUserRole.equalsIgnoreCase(Roles.ROLE_ADMIN)) {
 		    boundary.error("Not enough permissions");
         }
 

@@ -6,6 +6,7 @@ package his.sequence.diagrams;
 
 import his.*;
 import his.implementation.HasBoundary;
+import his.implementation.Roles;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -26,7 +27,7 @@ public class FolderController implements HasBoundary
 
     public String addTherapy(String patientId, LocalDateTime startDate, LocalDateTime endDate )
 	{
-        if (!boundary.getCurrentUserRole().equalsIgnoreCase("Oncologist")) boundary.error("Not enough permissions");
+        if (!boundary.getCurrentUserRole().equalsIgnoreCase(Roles.ROLE_ONCOLOGIST)) boundary.error("Not enough permissions");
         String patientFolderId = folderDAO.getPatientFolderId(patientId);
         if (patientFolderId == null) boundary.error("Patient does not exist");
         if (!therapyDAO.isTherapyAvailable(startDate, endDate)) boundary.error("Therapy not available");
@@ -47,7 +48,7 @@ public class FolderController implements HasBoundary
 	
 	public boolean openFolder( String name, String surname, String idCode, LocalDateTime dateOfBirth, String insuranceCode )
 	{
-		if (!boundary.getCurrentUserRole().equals("Receptionist")) boundary.error("Not enough permissions");
+		if (!boundary.getCurrentUserRole().equals(Roles.ROLE_RECEPTIONIST)) boundary.error("Not enough permissions");
 		if (folderDAO.folderForPatientExists(idCode)) boundary.error("Folder for patient already exists");
 		return folderDAO.createFolder(name, surname, idCode,dateOfBirth, insuranceCode);
 	}
@@ -68,7 +69,7 @@ public class FolderController implements HasBoundary
 	
 	public Folder getPatientFolder( String patientId )
 	{
-        if (!boundary.getCurrentUserRole().equals("Oncologist")) boundary.error("Not enough permissions");
+        if (!boundary.getCurrentUserRole().equals(Roles.ROLE_ONCOLOGIST)) boundary.error("Not enough permissions");
         Folder patientFolder = folderDAO.getPatientFolder(patientId);
         String patientFolderId = patientFolder.getId();
         Collection<Surgery> surgeryList = surgeryDAO.getSurgeries(patientFolderId);
