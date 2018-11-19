@@ -4,12 +4,7 @@
 
 package his.sequence.diagrams;
 
-<<<<<<< HEAD
-import com.sun.org.apache.regexp.internal.RE;
 import his.DatabaseManager;
-=======
-import his.ImagingTest;
->>>>>>> b91fd8e7cd12f1dc038616636cd77ba6f7f103e3
 import his.TestType;
 
 import java.sql.Connection;
