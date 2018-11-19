@@ -15,6 +15,6 @@ public class PrescribeVisit implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Prescribe and Book a Visit";
     }
 }

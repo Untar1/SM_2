@@ -3,7 +3,7 @@ package his.implementation.actions;
 import his.implementation.Action;
 
 public class BookSurgery implements Action {
-    
+
     @Override
     public void setContext() {
 
@@ -16,6 +16,6 @@ public class BookSurgery implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Book a Surgery";
     }
 }

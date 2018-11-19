@@ -15,6 +15,6 @@ public class AddNewDoctorAction implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Add New Doctor to the System";
     }
 }

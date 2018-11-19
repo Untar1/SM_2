@@ -16,6 +16,6 @@ public class LoginAction implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Login to the System";
     }
 }

@@ -15,6 +15,6 @@ public class SeeAllDoctors implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "See All Doctors";
     }
 }

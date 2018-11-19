@@ -15,6 +15,6 @@ public class SpecifyTeam implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Specify the Team";
     }
 }

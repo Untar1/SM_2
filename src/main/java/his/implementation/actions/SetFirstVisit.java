@@ -15,6 +15,6 @@ public class SetFirstVisit implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Set date of the First Visit";
     }
 }

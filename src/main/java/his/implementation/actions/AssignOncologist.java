@@ -15,6 +15,6 @@ public class AssignOncologist implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Assign an Oncologist";
     }
 }

@@ -15,6 +15,6 @@ public class OpenPatientFolder implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Open a Patient Folder";
     }
 }

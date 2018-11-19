@@ -15,6 +15,6 @@ public class CreateUser implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Register to the system";
     }
 }

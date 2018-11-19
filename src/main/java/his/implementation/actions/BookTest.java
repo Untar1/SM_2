@@ -2,7 +2,7 @@ package his.implementation.actions;
 
 import his.implementation.Action;
 
-public class AddTherapy implements Action {
+public class BookTest implements Action {
     @Override
     public void setContext() {
 
@@ -15,6 +15,6 @@ public class AddTherapy implements Action {
 
     @Override
     public String description() {
-        return "Add Therapy to the Patient Folder";
+        return "Book a Test";
     }
 }

@@ -15,6 +15,6 @@ public class WriteAnamnesis implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Write Patient Anamnesis";
     }
 }

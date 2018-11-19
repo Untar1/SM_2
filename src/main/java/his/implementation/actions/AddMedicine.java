@@ -15,6 +15,6 @@ public class AddMedicine implements Action {
 
     @Override
     public String description() {
-        return null;
+        return "Add medicine to the hospital system list";
     }
 }
