@@ -4,20 +4,21 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
 import his.Oncologist;
 import his.implementation.HasBoundary;
+
+import java.time.LocalDateTime;
 
 public class VisitController implements HasBoundary
 {
     private Boundary boundary;
 
-	public String bookTest( String patiendId, DateTime datetime, String testType )
+	public String bookTest(String patiendId, LocalDateTime datetime, String testType )
 	{
 		return null;
 	}
 	
-	public String bookVisit( DateTime dateTime, Oncologist oncologist, boolean isFirstVisit )
+	public String bookVisit( LocalDateTime dateTime, Oncologist oncologist, boolean isFirstVisit )
 	{
 		return null;
 	}

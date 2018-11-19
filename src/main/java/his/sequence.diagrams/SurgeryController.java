@@ -4,27 +4,27 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
 import his.Surgeon;
 import his.implementation.HasBoundary;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class SurgeryController implements HasBoundary
 {
     private Boundary boundary;
 
-	public String bookSurgery( String patientId, DateTime date, Surgeon surgeon )
+	public String bookSurgery(String patientId, LocalDateTime date, Surgeon surgeon )
 	{
 		return null;
 	}
 	
-	public boolean setSurgeonTeam( String surgeonId, DateTime dateTime, Collection teamList )
+	public boolean setSurgeonTeam( String surgeonId, LocalDateTime dateTime, Collection teamList )
 	{
 		return false;
 	}
 	
-	public boolean isInAllowedPeriod( DateTime curr, DateTime surgDate )
+	public boolean isInAllowedPeriod( LocalDateTime curr, LocalDateTime surgDate )
 	{
 		return false;
 	}

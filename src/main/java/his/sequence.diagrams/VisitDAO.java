@@ -4,11 +4,12 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
+
+import java.time.LocalDateTime;
 
 public class VisitDAO
 {
-	public String createVisit( String patientId, DateTime date )
+	public String createVisit( String patientId, LocalDateTime date )
 	{
 		return null;
 	}
@@ -18,7 +19,7 @@ public class VisitDAO
 		return false;
 	}
 	
-	public boolean visitAvailable( String oncologistId, DateTime date )
+	public boolean visitAvailable( String oncologistId, LocalDateTime date )
 	{
 		return false;
 	}

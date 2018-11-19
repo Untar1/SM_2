@@ -4,18 +4,18 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class SurgeryDAO
 {
-	public boolean surgeonAvailable( String surgeonId, DateTime date )
+	public boolean surgeonAvailable( String surgeonId, LocalDateTime date )
 	{
 		return false;
 	}
 	
-	public String bookSurgery( String surgeonId, DateTime date )
+	public String bookSurgery( String surgeonId, LocalDateTime date )
 	{
 		return null;
 	}
@@ -25,12 +25,12 @@ public class SurgeryDAO
 		return null;
 	}
 	
-	public String getSurgeryId( String surgeonId, DateTime date )
+	public String getSurgeryId( String surgeonId, LocalDateTime date )
 	{
 		return null;
 	}
 	
-	public boolean isOncologistAvailable( DateTime date, String id )
+	public boolean isOncologistAvailable( LocalDateTime date, String id )
 	{
 		return false;
 	}

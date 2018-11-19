@@ -4,6 +4,8 @@
 
 package his;
 
+import java.time.LocalDateTime;
+
 public class Visit
 {
 	private Date dateOfVisit;
@@ -28,7 +30,7 @@ public class Visit
 	
 	private HomeTherapy homeTherapy;
 	
-	private DateTime time;
+	private LocalDateTime time;
 	
 	
 }

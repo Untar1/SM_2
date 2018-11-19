@@ -4,9 +4,11 @@
 
 package his;
 
+import java.time.LocalDateTime;
+
 public class Surgery
 {
-	private DateTime dateTime;
+	private LocalDateTime dateTime;
 	
 	private Visit visit;
 	

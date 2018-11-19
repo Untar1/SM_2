@@ -4,9 +4,11 @@
 
 package his;
 
+import java.time.LocalDateTime;
+
 public class TestEvent
 {
-	private DateTime dateTime;
+	private LocalDateTime dateTime;
 	
 	private TestType testType;
 	

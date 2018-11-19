@@ -4,11 +4,13 @@
 
 package his;
 
+import java.time.LocalDateTime;
+
 public class Schedule
 {
 	private Therapy therapy;
 	
-	private DateTime dateTime;
+	private LocalDateTime dateTime;
 	
 	private Medicine medicine;
 	

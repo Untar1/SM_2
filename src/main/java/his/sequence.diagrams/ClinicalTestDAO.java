@@ -4,24 +4,24 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
 import his.ImagingTest;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class ClinicalTestDAO
 {
-	public boolean isTestAvailable( DateTime datetime, String testType )
+	public boolean isTestAvailable(LocalDateTime datetime, String testType )
 	{
 		return false;
 	}
 	
-	public String bookTest( DateTime date, String testType, ImagingTest subTestType )
+	public String bookTest( LocalDateTime date, String testType, ImagingTest subTestType )
 	{
 		return null;
 	}
 	
-	public String bookTest( DateTime datetime, String testType )
+	public String bookTest( LocalDateTime datetime, String testType )
 	{
 		return null;
 	}

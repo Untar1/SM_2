@@ -7,6 +7,7 @@ package his.sequence.diagrams;
 import his.*;
 import his.implementation.HasBoundary;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class FolderController implements HasBoundary
@@ -23,7 +24,7 @@ public class FolderController implements HasBoundary
     private ClinicalTestDAO clinicalTestDAO;
 
 
-    public String addTherapy( String patientId, DateTime startDate, DateTime endDate )
+    public String addTherapy(String patientId, LocalDateTime startDate, LocalDateTime endDate )
 	{
         if (!boundary.getCurrentUserRole().equalsIgnoreCase("Oncologist")) boundary.error("Not enough permissions");
         String patientFolderId = folderDAO.getPatientFolderId(patientId);
@@ -57,7 +58,7 @@ public class FolderController implements HasBoundary
 		return folderDAO.setOncologist(patientId, oncologistId);
 	}
 	
-	public boolean setFirstVisitDate( String patientId, String oncologistId, DateTime dateTime )
+	public boolean setFirstVisitDate( String patientId, String oncologistId, LocalDateTime dateTime )
 	{
 	    if (!userDAO.oncologistWithIdExists(oncologistId)) boundary.error("Oncologist does not exits");
 	    if (!visitDAO.visitAvailable(oncologistId, dateTime)) boundary.error("Visit not available");
@@ -91,6 +92,10 @@ public class FolderController implements HasBoundary
         this.surgeryDAO = surgeryDAO;
         this.clinicalTestDAO = clinicalTestDAO;
 	}
+
+	public FolderController() {
+
+    }
 
 	public void setBoundary(Boundary boundary) {
         this.boundary = boundary;

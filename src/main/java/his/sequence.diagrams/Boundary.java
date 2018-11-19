@@ -5,15 +5,13 @@
 package his.sequence.diagrams;
 
 import com.google.common.collect.Lists;
-import his.DateTime;
 import his.ImagingTest;
+import his.implementation.Action;
 import his.implementation.Roles;
 import his.implementation.UserSettings;
-import his.implementation.Action;
 import his.implementation.actions.AddMedicine;
 import his.implementation.actions.AddNewDoctorAction;
 import his.implementation.actions.AddTherapy;
-import his.implementation.actions.AssignOncologist;
 import his.implementation.actions.BookSurgery;
 import his.implementation.actions.BookTest;
 import his.implementation.actions.CopyAndAddTests;
@@ -28,6 +26,7 @@ import his.implementation.actions.SeeMedicines;
 import his.implementation.actions.SpecifyTeam;
 import his.implementation.actions.WriteAnamnesis;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +76,7 @@ public class Boundary {
         return null;
     }
 
-    public DateTime getCurrentDate() {
+    public LocalDateTime getCurrentDate() {
         return null;
     }
 
