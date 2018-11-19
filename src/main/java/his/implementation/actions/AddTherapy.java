@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AddTherapy implements Action {
-    private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    private DateTimeFormatter format = getFormat();
 
     private String patientId;
     private LocalDateTime start;
@@ -18,21 +18,8 @@ public class AddTherapy implements Action {
     public void setContext() {
         Scanner sc = systemIn();
         patientId = getNotBlankLine(sc, "Enter patient id: ");
-        start = LocalDateTime.parse(getNotBlankLine(sc, "Enter start date (dd.MM.yyyy HH:mm): ", line -> {
-            try {
-                return line != null && LocalDateTime.parse(line, format) != null;
-            } catch (Exception e) {
-                return false;
-            }
-        }), format);
-
-        end = LocalDateTime.parse(getNotBlankLine(sc, "Enter end date (dd.MM.yyyy HH:mm): ", line -> {
-            try {
-                return line != null && LocalDateTime.parse(line, format) != null;
-            } catch (Exception e) {
-                return false;
-            }
-        }), format);
+        start = getDate(sc, "Enter start date (dd.MM.yyyy HH:mm): ", format);
+        end = getDate(sc, "Enter end date (dd.MM.yyyy HH:mm): ", format);
     }
 
     @Override

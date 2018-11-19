@@ -20,6 +20,12 @@ public class Surgeon
 	{
 		return null;
 	}
-	
-	
+
+    public String getProfessionalID() {
+        return professionalID;
+    }
+
+    public void setProfessionalID(String professionalID) {
+        this.professionalID = professionalID;
+    }
 }

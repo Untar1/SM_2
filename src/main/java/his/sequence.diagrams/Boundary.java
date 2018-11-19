@@ -6,6 +6,8 @@ package his.sequence.diagrams;
 
 import com.google.common.collect.Lists;
 import his.ImagingTest;
+import his.Medicine;
+import his.TestType;
 import his.implementation.Action;
 import his.implementation.Roles;
 import his.implementation.UserSettings;
@@ -35,6 +37,13 @@ import java.util.Scanner;
 
 public class Boundary {
     private static UserSettings settings;
+    private List<Medicine> medicines;
+    private String patientName;
+    private TestType subTestType;
+    private String patientSurname;
+    private String patientInsuranceCode;
+    private String patientIdCode;
+    private LocalDateTime now = LocalDateTime.now();
 
     public static UserSettings getSettings() {
         return settings;
@@ -53,31 +62,59 @@ public class Boundary {
     }
 
     public Collection getMedicines() {
-        return null;
+        return medicines;
     }
 
-    public ImagingTest getSubTestType() {
-        return null;
+    public TestType getSubTestType() {
+        return subTestType;
     }
 
     public String getPatientName() {
-        return null;
+        return patientName;
     }
 
     public String getPatientSurname() {
-        return null;
+        return patientSurname;
     }
 
     public String getPatientIdCode() {
-        return null;
+        return patientIdCode;
     }
 
     public String getPatientInsuranceCode() {
-        return null;
+        return patientInsuranceCode;
     }
 
     public LocalDateTime getCurrentDate() {
-        return null;
+        return now;
+    }
+
+    public void setMedicines(List<Medicine> medicines) {
+        this.medicines = medicines;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public void setSubTestType(TestType subTestType) {
+        this.subTestType = subTestType;
+    }
+
+    public void setPatientSurname(String patientSurname) {
+        this.patientSurname = patientSurname;
+    }
+
+    public void setPatientInsuranceCode(String patientInsuranceCode) {
+        this.patientInsuranceCode = patientInsuranceCode;
+    }
+
+    public void setPatientIdCode(String patientIdCode) {
+        this.patientIdCode = patientIdCode;
+    }
+
+    public void setNow(LocalDateTime now) {
+        this.now = now;
     }
 
     public static final Scanner sc = new Scanner(System.in);
@@ -88,6 +125,7 @@ public class Boundary {
         System.out.println("==================================");
         System.out.println("type 'exit' to exit the program");
 
+        Boundary boundary = new Boundary();
         while (true) {
             System.out.println("==================================");
 
@@ -161,6 +199,7 @@ public class Boundary {
                 continue;
             }
 
+            action.setBoundary(boundary);
             action.setContext();
             try {
                 action.execute();

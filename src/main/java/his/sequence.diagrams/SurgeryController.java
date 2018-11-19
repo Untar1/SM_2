@@ -56,6 +56,12 @@ public class SurgeryController implements HasBoundary
         this.folderDAO = folderDAO;
     }
 
+    public SurgeryController() {
+        this.surgeryDAO = new SurgeryDAO();
+        this.userDAO = new UserDAO();
+        this.folderDAO = new FolderDAO();
+    }
+
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
     }
