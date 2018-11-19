@@ -65,6 +65,15 @@ public class DatabaseManager {
                     "  PRIMARY KEY (id)\n" +
                     ");");
 
+            stmt.executeUpdate("CREATE TABLE patients (\n" +
+                    "  id INTEGER IDENTITY ,\n" +
+                    "  name VARCHAR(40),\n" +
+                    "  surname VARCHAR(40),\n" +
+                    "  idCode VARCHAR(40),\n" +
+                    "  insurance VARCHAR(40),\n" +
+                    "  PRIMARY KEY (id)\n" +
+                    ");");
+
             System.out.println("Database initialized successfully");
         } catch (Exception e) {
             e.printStackTrace(System.out);
