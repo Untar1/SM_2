@@ -38,7 +38,7 @@ public class SurgeryController implements HasBoundary
 	
 	public boolean setSurgeonTeam( String surgeonId, LocalDateTime dateTime, Collection<Oncologist> teamList )
 	{
-        if (!boundary.getCurrentUserRole().equalsIgnoreCase("Surgeon")) {
+        if (!boundary.getCurrentUserRole().equals(Roles.ROLE_SURGEON)) {
             boundary.error("Not enough permissions");
         }
         String surgeryId = surgeryDAO.getSurgeryId(surgeonId, dateTime);

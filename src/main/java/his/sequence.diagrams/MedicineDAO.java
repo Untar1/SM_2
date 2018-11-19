@@ -4,6 +4,10 @@
 
 package his.sequence.diagrams;
 
+import his.Medicine;
+
+import java.util.Collection;
+
 public class MedicineDAO
 {
 	public String addMedicine( String companyId, String medicineName )
@@ -15,6 +19,9 @@ public class MedicineDAO
 	{
 		return false;
 	}
-	
-	
+
+    public Collection<Medicine> getAllMedicines()
+    {
+        return null;
+    }
 }
