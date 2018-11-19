@@ -120,6 +120,12 @@ public class Boundary {
     public static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        try {
+            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+        } catch (Exception e) {
+            System.err.println("Failed to load driver");
+        }
+
         System.out.println("==================================");
         System.out.println("    HOSPITAL INFORMATION SYSTEM ");
         System.out.println("==================================");

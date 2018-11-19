@@ -1,7 +1,8 @@
-
+package his;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseManager {
@@ -26,18 +27,43 @@ public class DatabaseManager {
                     ");\n");
 
             stmt.executeUpdate("CREATE TABLE company (\n" +
-                    "  id VARCHAR(20),\n" +
+                    "  id INTEGER IDENTITY ,\n" +
                     "  name VARCHAR(20)\n" +
                     ");");
 
+            stmt.executeUpdate("CREATE TABLE folder (\n" +
+                    "  id INTEGER IDENTITY ,\n" +
+                    "  patient_id VARCHAR(30),\n" +
+                    "  FOREIGN KEY (patient_id) REFERENCES users(id),\n" +
+                    "  PRIMARY KEY (id)\n" +
+                    ");");
+
             stmt.executeUpdate("CREATE TABLE anamneses (\n" +
-                    "  id        VARCHAR(20),\n" +
+                    "  id        INTEGER IDENTITY,\n" +
                     "  patientId VARCHAR(30),\n" +
                     "  text      VARCHAR(300),\n" +
                     "  FOREIGN KEY (patientId) REFERENCES users (id),\n" +
                     "  PRIMARY KEY (id)\n" +
                     ");");
 
+            stmt.executeUpdate("CREATE TABLE clinical_tests (\n" +
+                    "  id INTEGER IDENTITY ,\n" +
+                    "  start_date DATETIME,\n" +
+                    "  testType VARCHAR(30),\n" +
+                    "  subTestType VARCHAR(30),\n" +
+                    "  folder_id INTEGER,\n" +
+                    "  FOREIGN KEY (folder_id) REFERENCES folder(id)\n" +
+                    ");");
+
+            stmt.executeUpdate("CREATE TABLE doctors (\n" +
+                    "  id INTEGER IDENTITY ,\n" +
+                    "  prof_id VARCHAR(40),\n" +
+                    "  name VARCHAR(30),\n" +
+                    "  surname VARCHAR(40),\n" +
+                    "  type VARCHAR(40),\n" +
+                    "  subtype VARCHAR(40),\n" +
+                    "  PRIMARY KEY (id)\n" +
+                    ");");
 
             System.out.println("Database initialized successfully");
         } catch (Exception e) {
@@ -70,6 +96,10 @@ public class DatabaseManager {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/hospitaldb", "SA", "");
     }
 }
 

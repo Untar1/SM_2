@@ -4,8 +4,11 @@
 
 package his.sequence.diagrams;
 
-import his.ImagingTest;
+import com.sun.org.apache.regexp.internal.RE;
+import his.DatabaseManager;
+import his.TestType;
 
+import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -16,9 +19,13 @@ public class ClinicalTestDAO
 		return false;
 	}
 	
-	public String bookTest( LocalDateTime date, String testType, ImagingTest subTestType )
+	public String bookTest( LocalDateTime date, String testType, TestType subTestType )
 	{
-		return null;
+		try (Connection con = DatabaseManager.getConnection()) {
+            return "";
+        } catch (Exception e) {
+		    throw new RuntimeException(e);
+        }
 	}
 	
 	public String bookTest( LocalDateTime datetime, String testType )
