@@ -73,6 +73,12 @@ public class VisitController implements HasBoundary
         this.visitDAO = visitDAO;
     }
 
+    public VisitController() {
+	    this.userDAO = new UserDAO();
+	    this.clinicalTestDAO = new ClinicalTestDAO();
+	    this.visitDAO = new VisitDAO();
+    }
+
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
     }

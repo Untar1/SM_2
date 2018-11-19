@@ -41,6 +41,11 @@ public class MedicineController implements HasBoundary
         this.medicineDAO = medicineDAO;
     }
 
+    public MedicineController() {
+        this.companyDAO = new CompanyDAO();
+        this.medicineDAO = new MedicineDAO();
+    }
+
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
     }

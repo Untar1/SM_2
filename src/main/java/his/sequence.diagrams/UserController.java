@@ -64,6 +64,10 @@ public class UserController implements HasBoundary
         this.userDAO = userDAO;
     }
 
+    public UserController() {
+	    this.userDAO = new UserDAO();
+    }
+
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
     }
