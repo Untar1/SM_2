@@ -4,8 +4,9 @@
 
 package his.sequence.diagrams;
 
-import his.Date;
 import his.Folder;
+
+import java.time.LocalDateTime;
 
 public class FolderDAO
 {
@@ -34,7 +35,7 @@ public class FolderDAO
 		return false;
 	}
 	
-	public boolean createFolder( String name, String surname, String idCode, Date dateOfBirth, String insuranceCode )
+	public boolean createFolder(String name, String surname, String idCode, LocalDateTime dateOfBirth, String insuranceCode )
 	{
 		return false;
 	}

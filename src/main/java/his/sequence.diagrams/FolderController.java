@@ -45,7 +45,7 @@ public class FolderController implements HasBoundary
         return therapyId;
 	}
 	
-	public boolean openFolder( String name, String surname, String idCode, Date dateOfBirth, String insuranceCode )
+	public boolean openFolder( String name, String surname, String idCode, LocalDateTime dateOfBirth, String insuranceCode )
 	{
 		if (!boundary.getCurrentUserRole().equals("Receptionist")) boundary.error("Not enough permissions");
 		if (folderDAO.folderForPatientExists(idCode)) boundary.error("Folder for patient already exists");
