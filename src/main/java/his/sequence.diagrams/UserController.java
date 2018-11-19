@@ -11,8 +11,7 @@ import java.util.Collection;
 
 public class UserController implements HasBoundary
 {
-    // TODO: Like this?
-    private UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO;
     private Boundary boundary;
 
 	public String addNewDoctor( String professionalId, String name, String surname, String type, String subType )
@@ -43,7 +42,6 @@ public class UserController implements HasBoundary
 	
 	public Collection getAllPatients( )
 	{
-        // TODO: How to parse error msgs?
 	    String currentUserRole = boundary.getCurrentUserRole();
         if (!currentUserRole.equals(Roles.ROLE_RECEPTIONIST)) {
             boundary.error("Not enough permissions");
@@ -62,6 +60,9 @@ public class UserController implements HasBoundary
 	    return userDAO.getAllDoctors(docType);
 	}
 
+    public UserController(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
