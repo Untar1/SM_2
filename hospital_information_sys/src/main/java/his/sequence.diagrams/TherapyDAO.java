@@ -4,18 +4,18 @@
 
 package his.sequence.diagrams;
 
-import his.DateTime;
+import his.dateTime;
 
 import java.util.Collection;
 
 public class TherapyDAO
 {
-	public boolean isTherapyAvailable( DateTime startDate, DateTime endDate )
+	public boolean isTherapyAvailable( dateTime startDate, dateTime endDate )
 	{
 		return false;
 	}
 	
-	public String bookTherapy( DateTime startTime, DateTime endTime )
+	public String bookTherapy( dateTime startTime, dateTime endTime )
 	{
 		return null;
 	}

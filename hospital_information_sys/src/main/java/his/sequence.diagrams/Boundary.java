@@ -18,7 +18,8 @@ public class Boundary
 	
 	public void error( String message )
 	{
-		
+	    Exception e = new Exception();
+	    e.printStackTrace(System.out.printf(message));
 	}
 	
 	public Collection getMedicines( )
