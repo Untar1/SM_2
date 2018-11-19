@@ -4,9 +4,12 @@ import his.implementation.Action;
 import his.sequence.diagrams.FolderController;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AddTherapy implements Action {
+    private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+
     private String patientId;
     private LocalDateTime start;
     private LocalDateTime end;
@@ -15,13 +18,21 @@ public class AddTherapy implements Action {
     public void setContext() {
         Scanner sc = systemIn();
         patientId = getNotBlankLine(sc, "Enter patient id: ");
-        start = getNotBlankLine(sc, "Enter start date (dd.mm.yy HH:MM:ss): ", line -> {
+        start = LocalDateTime.parse(getNotBlankLine(sc, "Enter start date (dd.MM.yyyy HH:mm): ", line -> {
+            try {
+                return line != null && LocalDateTime.parse(line, format) != null;
+            } catch (Exception e) {
+                return false;
+            }
+        }), format);
 
-        });
-
-        end = getNotBlankLine(sc, "Enter end date (dd.mm.yy HH:MM:ss): ", line -> {
-
-        });
+        end = LocalDateTime.parse(getNotBlankLine(sc, "Enter end date (dd.MM.yyyy HH:mm): ", line -> {
+            try {
+                return line != null && LocalDateTime.parse(line, format) != null;
+            } catch (Exception e) {
+                return false;
+            }
+        }), format);
     }
 
     @Override
