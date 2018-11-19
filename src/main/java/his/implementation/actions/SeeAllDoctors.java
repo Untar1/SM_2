@@ -24,6 +24,7 @@ public class SeeAllDoctors implements Action {
         controller.setBoundary(boundary);
         Collection doctors = controller.getAllDoctors(doctorType);
         System.out.println(String.format("Fetched %d doctors", doctors.size()));
+        doctors.forEach(System.out::println);
     }
 
     @Override

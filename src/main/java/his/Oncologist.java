@@ -9,8 +9,16 @@ public class Oncologist
 	private String name;
 	
 	private String surname;
-	
-	private String professionalID;
+
+    public String getProfessionalID() {
+        return professionalID;
+    }
+
+    public void setProfessionalID(String professionalID) {
+        this.professionalID = professionalID;
+    }
+
+    private String professionalID;
 	
 	private OncologistType oncologistType;
 	

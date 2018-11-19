@@ -30,6 +30,11 @@ public class AnamnesisController implements HasBoundary {
         this.anamnesisDAO = anamnesisDAO;
     }
 
+    public AnamnesisController() {
+        this.userDAO = new UserDAO();
+        this.anamnesisDAO = new AnamnesisDAO();
+    }
+
     public void setBoundary(Boundary boundary) {
         this.boundary = boundary;
     }
